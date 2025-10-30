@@ -258,9 +258,9 @@ export default function Index() {
                 <CardContent className="p-6">
                   <div className="space-y-3">
                     {category.positions.map((position, idx) => (
-                      <div key={idx} className="flex justify-between items-center py-2 border-b last:border-0">
+                      <div key={idx} className="flex justify-between items-center py-2 border-b last:border-0 gap-4">
                         <span className="text-foreground">{position.title}</span>
-                        <span className="font-semibold text-accent">{position.price}</span>
+                        <span className="font-semibold text-accent whitespace-nowrap">{position.price}</span>
                       </div>
                     ))}
                   </div>
