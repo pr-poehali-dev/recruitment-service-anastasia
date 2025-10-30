@@ -180,8 +180,12 @@ export default function Index() {
               </Button>
             </div>
             <div className="relative">
-              <div className="w-full h-[500px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl flex items-center justify-center">
-                <Icon name="UserCircle" className="text-primary/20" size={200} />
+              <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://cdn.poehali.dev/files/c5198504-8027-434b-b71a-316e12f29420.jpg" 
+                  alt="Анастасия Зайцева"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
