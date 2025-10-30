@@ -174,7 +174,7 @@ export default function Index() {
                 <img 
                   src="https://cdn.poehali.dev/files/c5198504-8027-434b-b71a-316e12f29420.jpg" 
                   alt="Анастасия Зайцева"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>
