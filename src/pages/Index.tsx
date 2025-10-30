@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const services = [
@@ -82,6 +86,23 @@ const priceCategories = [
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    position: '',
+    message: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: 'Заявка отправлена!',
+      description: 'Анастасия свяжется с вами в ближайшее время.',
+    });
+    setFormData({ name: '', phone: '', email: '', position: '', message: '' });
+  };
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
@@ -261,39 +282,109 @@ export default function Index() {
           <h2 className="text-4xl font-bold text-primary mb-12 text-center">Контакты</h2>
           <Card className="border-2">
             <CardContent className="p-8">
-              <div className="text-center space-y-6">
-                <div>
+              <div className="space-y-8">
+                <div className="text-center">
                   <h3 className="text-2xl font-bold text-primary mb-4">
                     Готовы закрыть ключевые позиции вашей команды?
                   </h3>
                   <p className="text-lg text-muted-foreground">
-                    Свяжитесь со мной для обсуждения вашего проекта
+                    Оставьте заявку и я свяжусь с вами в ближайшее время
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 max-w-md mx-auto pt-4">
-                  <a
-                    href="tel:+79000000000"
-                    className="flex items-center gap-3 p-4 rounded-lg hover:bg-accent/10 transition-colors"
-                  >
-                    <Icon name="Phone" className="text-accent" size={24} />
-                    <span className="text-lg">+7 (900) 000-00-00</span>
-                  </a>
-                  <a
-                    href="mailto:zaitseva@example.com"
-                    className="flex items-center gap-3 p-4 rounded-lg hover:bg-accent/10 transition-colors"
-                  >
-                    <Icon name="Mail" className="text-accent" size={24} />
-                    <span className="text-lg">zaitseva@example.com</span>
-                  </a>
-                  <a
-                    href="https://t.me/zaitseva"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg hover:bg-accent/10 transition-colors"
-                  >
-                    <Icon name="Send" className="text-accent" size={24} />
-                    <span className="text-lg">Telegram</span>
-                  </a>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Ваше имя *</Label>
+                      <Input
+                        id="name"
+                        placeholder="Иван Иванов"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Телефон *</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+7 (900) 000-00-00"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="email@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="position">Должность для подбора</Label>
+                      <Input
+                        id="position"
+                        placeholder="Например: Руководитель отдела"
+                        value={formData.position}
+                        onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Сообщение</Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Расскажите о вашей вакансии и требованиях..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    />
+                  </div>
+
+                  <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white">
+                    <Icon name="Send" className="mr-2" size={20} />
+                    Отправить заявку
+                  </Button>
+                </form>
+
+                <Separator />
+
+                <div>
+                  <p className="text-center text-muted-foreground mb-4">Или свяжитесь со мной напрямую:</p>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <a
+                      href="tel:+79000000000"
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors"
+                    >
+                      <Icon name="Phone" className="text-accent" size={20} />
+                      <span>+7 (900) 000-00-00</span>
+                    </a>
+                    <a
+                      href="mailto:zaitseva@example.com"
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors"
+                    >
+                      <Icon name="Mail" className="text-accent" size={20} />
+                      <span>zaitseva@example.com</span>
+                    </a>
+                    <a
+                      href="https://t.me/zaitseva"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors"
+                    >
+                      <Icon name="Send" className="text-accent" size={20} />
+                      <span>Telegram</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </CardContent>
