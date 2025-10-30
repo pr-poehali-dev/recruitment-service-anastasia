@@ -362,18 +362,18 @@ export default function Index() {
                   <p className="text-center text-muted-foreground mb-4">Или свяжитесь со мной напрямую:</p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <a
-                      href="tel:+79000000000"
+                      href="tel:+79628658925"
                       className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors"
                     >
                       <Icon name="Phone" className="text-accent" size={20} />
-                      <span>+7 (900) 000-00-00</span>
+                      <span>+7 (962) 865-89-25</span>
                     </a>
                     <a
-                      href="mailto:zaitseva@example.com"
+                      href="mailto:as_zaiyseva@mail.ru"
                       className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors"
                     >
                       <Icon name="Mail" className="text-accent" size={20} />
-                      <span>zaitseva@example.com</span>
+                      <span>as_zaiyseva@mail.ru</span>
                     </a>
                     <a
                       href="https://t.me/zaitseva"
