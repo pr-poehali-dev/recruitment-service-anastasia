@@ -180,11 +180,11 @@ export default function Index() {
               </Button>
             </div>
             <div className="relative">
-              <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-amber-50 to-stone-100">
                 <img 
                   src="https://cdn.poehali.dev/files/c5198504-8027-434b-b71a-316e12f29420.jpg" 
                   alt="Анастасия Зайцева"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover mix-blend-multiply"
                 />
               </div>
             </div>
